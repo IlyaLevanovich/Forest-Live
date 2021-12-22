@@ -2,7 +2,7 @@
 ## Open-world, third-person survival game for Android ##
 
 You have to play a jumberjack who must survive in the forest.
-<p> The game has a system for the collectiing premets, crafting and building.
+<p> The game has a system for the collectiing items, crafting and building.
 
 ### System features ###
 * Random filling of a location with elements at start
