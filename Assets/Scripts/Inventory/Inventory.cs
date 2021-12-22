@@ -7,16 +7,22 @@ namespace Assets.Scripts.Inventory
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private Image[] _slots;
+        [SerializeField] private Image _currentItem;
+        private Text[] _slotsText;
+
         private Dictionary<string, int> _content = new Dictionary<string, int>();
         public Dictionary<string, int> Content { get { return _content; } set { _content = value; } }
 
         private void Start()
         {
+            _slotsText = new Text[_slots.Length];
+
             for (int i = 0; i < _slots.Length; i++)
             {
                 var current = _slots[i];
+                _slotsText[i] = current.GetComponentInChildren<Text>();
                 if (current.sprite != null)
-                    _content.Add(current.sprite.name, int.Parse(current.GetComponentInChildren<Text>().text));
+                    _content.Add(current.sprite.name, int.Parse(_slotsText[i].text));
             }
         }
 
@@ -27,33 +33,41 @@ namespace Assets.Scripts.Inventory
                 var current = _slots[i];
                 if (current.sprite != null && current.sprite.name == name)
                 {
-                    Text countText = current.GetComponentInChildren<Text>();
-                    int count = int.Parse(countText.text) + 1;
+                    int count = int.Parse(_slotsText[i].text) + 1;
                     _content[name]++;
-                    countText.text = count.ToString();
+                    _slotsText[i].text = count.ToString();
+                    if (current.sprite == _currentItem.sprite)
+                        _currentItem.GetComponentInChildren<Text>().text = _slotsText[i].text;
                     return;
                 }
             }
             for (int i = 0; i < _slots.Length; i++)
             {
-                var current = _slots[i];
-                if (current.sprite == null)
+                if (_slots[i].sprite == null)
                 {
-                    current.sprite = Resources.Load<Sprite>(name);
-                    current.GetComponentInChildren<Text>().text = 1.ToString();
+                    _slots[i].sprite = Resources.Load<Sprite>(name);
+                    _slotsText[i].text = 1.ToString();
                     _content.Add(name, 1);
-                    break;
+                    return;
                 }
             }
         }
+
         public void UpdateInfo()
         {
             for (int i = 0; i < _slots.Length; i++)
             {
-                var current = _slots[i];
-                if (current.sprite != null)
-                    current.GetComponentInChildren<Text>().text = _content[current.sprite.name].ToString();
+                if(_slots[i].sprite != null)
+                    _slotsText[i].text = _content[_slots[i].sprite.name].ToString();
+                if (int.Parse(_slotsText[i].text) == 0)
+                    _slots[i].sprite = null;
             }
+        }
+        public void SetCurrentItem(Image image)
+        {
+            if (image.sprite == null) return;
+            _currentItem.sprite = image.sprite;
+            _currentItem.GetComponentInChildren<Text>().text = image.GetComponentInChildren<Text>().text;
         }
     }
 }
