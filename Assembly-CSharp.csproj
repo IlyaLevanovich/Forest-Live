@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F6D5CFDB-254D-3C6E-3D7A-3DE7B9BBCA0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -62,7 +63,7 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Low_Poly_Survival\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Craft\Craft.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Craft\Crafting.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Plane\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationSwitcher.cs" />
@@ -74,6 +75,15 @@
     <Compile Include="Assets\Scripts\Trees\ITakeDamage.cs" />
     <Compile Include="Assets\Scripts\UI\Backpack.cs" />
     <Compile Include="Assets\Scripts\UI\UIPressing.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.XML" />
+    <None Include="Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.XML" />
+    <None Include="Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll" />
+    <None Include="Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.dll" />
+    <None Include="Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.XML" />
+    <None Include="Assets\JsonDotNet\Assemblies\Windows\Newtonsoft.Json.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -252,6 +262,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:\UnityHub\2019.4.30f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\UnityHub\2019.4.30f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

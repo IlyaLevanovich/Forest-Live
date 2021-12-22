@@ -37,7 +37,7 @@ namespace Assets.Scripts.Inventory
             for (int i = 0; i < _slots.Length; i++)
             {
                 var current = _slots[i];
-                if(current.sprite == null)
+                if (current.sprite == null)
                 {
                     current.sprite = Resources.Load<Sprite>(name);
                     current.GetComponentInChildren<Text>().text = 1.ToString();
