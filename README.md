@@ -1,7 +1,7 @@
 # Forest-Live
 ## Open-world, third-person survival game for Android ##
 
-You have to play a jumberjack who must survive in the forest.
+You have to play a lumberjack who must survive in the forest.
 <p> The game has a system for the collectiing items, crafting and building.
 
 ### System features ###
